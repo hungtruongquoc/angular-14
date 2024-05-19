@@ -1,6 +1,6 @@
 <p>recipe-list works!</p>
 <ul>
-  <li>Item 1 <a [routerLink]="['/recipes', 1]">View</a></li>
-  <li>Item 2 <a [routerLink]="['/recipes', 2]">View</a></li>
+  <li>Item 1 <a [routerLink]="['/recipes', 1]" [queryParams]="{'show': 'top'}">View</a></li>
+  <li>Item 2 <a [routerLink]="['/recipes', 2]" fragment="financial">View</a></li>
 </ul>
 <button class="btn btn-default" (click)="goBackToLogin()">Go to login</button>
