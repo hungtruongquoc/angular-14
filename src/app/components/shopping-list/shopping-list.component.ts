@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-shopping-list',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './shopping-list.component.sass'
 })
 export class ShoppingListComponent {
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
+  goToHome() {
+    this.router.navigate(['/']);
+  }
+
+  reloadList(){
+    // this.router.navigate(['login'], {relativeTo: this.route});
+  }
 }
