@@ -11,8 +11,9 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { ShoppingListEditComponent } from './components/shopping-list/shopping-list-edit/shopping-list-edit.component';
 
 const routes: Routes = [
-  {path: '', component: RecipeListComponent},
-  {path: 'recipe/:id', component: RecipeItemComponent},
+  {path: '', component: RecipesComponent},
+  {path: 'recipes', component: RecipeListComponent},
+  {path: 'recipes/:id', component: RecipeItemComponent},
   {path: 'login', component: ShoppingListComponent},
 ];
 
