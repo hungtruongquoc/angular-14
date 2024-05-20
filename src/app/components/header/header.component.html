@@ -5,10 +5,10 @@
   <h2 class="col-xs-3" routerLinkActive="active">
     <a [routerLink]="['/recipes']">Dashboard</a>
   </h2>
-  <h2 class="col-xs-3" routerLinkActive="active">
+  <h2 class="col-xs-3" routerLinkActive="active" *ngIf="showLogin">
     <a [routerLink]="['/login']">Login</a>
   </h2>
-  <h2 class="col-xs-3" routerLinkActive="active">
+  <h2 class="col-xs-3" routerLinkActive="active" *ngIf="showLogout">
     <a (click)="emitLogOutClicked()">Logout</a>
   </h2>
 </div>
