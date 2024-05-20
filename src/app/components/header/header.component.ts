@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +6,13 @@ import {Component} from '@angular/core';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent {
+  @Output() logOutClicked = new EventEmitter<void>();
+
   constructor() {
     console.log('HeaderComponent constructor');
+  }
+
+  emitLogOutClicked() {
+    this.logOutClicked.emit()
   }
 }

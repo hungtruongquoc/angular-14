@@ -1,11 +1,14 @@
 <div class="row">
-  <h2 class="col-xs-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+  <h2 class="col-xs-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a routerLink="/">Home</a>
   </h2>
-  <h2 class="col-xs-4" routerLinkActive="active">
+  <h2 class="col-xs-3" routerLinkActive="active">
     <a [routerLink]="['/recipes']">Dashboard</a>
   </h2>
-  <h2 class="col-xs-4" routerLinkActive="active">
+  <h2 class="col-xs-3" routerLinkActive="active">
     <a [routerLink]="['/login']">Login</a>
+  </h2>
+  <h2 class="col-xs-3" routerLinkActive="active">
+    <a (click)="emitLogOutClicked()">Logout</a>
   </h2>
 </div>
