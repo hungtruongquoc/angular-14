@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {LoginService} from "../../core/services/login-service/login.service";
+import {AuthService} from "../../core/services/auth-service/auth.service";
 import {of} from "rxjs";
 import {MessageService} from "primeng/api";
 import {LoginFormComponent} from "../../core/forms/login-form/login-form.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-section',
@@ -10,7 +11,7 @@ import {LoginFormComponent} from "../../core/forms/login-form/login-form.compone
   styleUrl: './login-section.component.sass'
 })
 export class LoginSectionComponent implements OnInit, OnDestroy {
-  constructor(private loginService: LoginService, private messageService: MessageService) {
+  constructor(private loginService: AuthService, private messageService: MessageService, private router: Router) {
   }
 
   isLoading: boolean = false;
@@ -23,10 +24,10 @@ export class LoginSectionComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.loginService.requestError.unsubscribe();
     this.messageService.clear();
+    this.loginForm.reset();
   }
 
   onError(error: any) {
-    console.log(error);
     this.messageService.add({severity: 'error', summary: 'Error', detail: 'Login failed'});
     this.loginForm.reset();
   }
@@ -36,7 +37,7 @@ export class LoginSectionComponent implements OnInit, OnDestroy {
     this.loginService.login(loginData.username, loginData.password)
       .subscribe((response) => {
         this.isLoading = false;
-        console.log(response)
+        this.router.navigate([this.loginService.redirectUrl || '/']);
       });
   }
 
