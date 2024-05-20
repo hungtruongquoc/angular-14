@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {Route, RouterModule, Routes} from "@angular/router";
 import {AppComponent} from './app.component';
 import {HeaderComponent} from "./components/header/header.component";
 import {RecipesComponent} from './components/recipes/recipes.component';
@@ -9,18 +8,16 @@ import {RecipeDetailComponent} from './components/recipes/recipe-detail/recipe-d
 import {RecipeItemComponent} from './components/recipes/recipe-list/recipe-item/recipe-item.component';
 import {ShoppingListComponent} from './components/shopping-list/shopping-list.component';
 import {ShoppingListEditComponent} from './components/shopping-list/shopping-list-edit/shopping-list-edit.component';
-
-const routes: Routes = [
-  {path: '', component: RecipesComponent},
-  {
-    path: 'recipes', component: RecipesComponent,
-    children: [
-      {path: '', component: RecipeListComponent},
-      {path: ':id', component: RecipeItemComponent},
-    ]
-  },
-  {path: 'login', component: ShoppingListComponent},
-];
+import {AppRoutingModule} from "./app-routing.module";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {LoginFormComponent} from './core/forms/login-form/login-form.component';
+import {LoginSectionComponent} from './components/login-section/login-section.component';
+import {LoginService} from "./core/services/login-service/login.service";
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MessagesModule } from 'primeng/messages';
+import { MessageService } from 'primeng/api';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -31,13 +28,20 @@ const routes: Routes = [
     RecipeDetailComponent,
     RecipeItemComponent,
     ShoppingListComponent,
-    ShoppingListEditComponent
+    ShoppingListEditComponent,
+    LoginFormComponent,
+    LoginSectionComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ProgressSpinnerModule,
+    MessagesModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [LoginService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

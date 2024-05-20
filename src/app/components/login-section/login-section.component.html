@@ -1,0 +1,3 @@
+<app-login-form (login)="onLoginSubmit($event)" #loginForm></app-login-form>
+<p-progressSpinner *ngIf="isLoading" ariaLabel="loading" />
+<p-messages />

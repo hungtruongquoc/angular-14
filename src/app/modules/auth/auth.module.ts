@@ -8,6 +8,9 @@ import { LoginFormComponent } from './login-form/login-form.component';
   declarations: [
     LoginFormComponent
   ],
+  exports: [
+    LoginFormComponent
+  ],
   imports: [
     CommonModule
   ]

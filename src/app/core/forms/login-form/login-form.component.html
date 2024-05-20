@@ -1,0 +1,40 @@
+<!-- app-login.component.html -->
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <div>
+    <label for="username">Username *</label>
+    <input
+      class="form-control"
+      type="text"
+      id="username"
+      name="username"
+      ngModel
+      required
+      #username="ngModel"
+    />
+    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+      <small *ngIf="username.errors?.required">Username is required.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password *</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      ngModel
+      required
+      #password="ngModel"
+    />
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+      <small *ngIf="password.errors?.required">Password is required.</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+
+  <div *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+</form>
